@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/style.css' />
+    
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+
+    <script src="/js/main.js"></script>
+
+  </head>
+  <body ng-app='uploadApp' ng-controller='mainCtrl'>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+  
+    <form name="uploadForm" ng-submit='submit()'>
+      <button class="button"
+        ng-model="file"
+        name="newFile"
+        ngf-select
+        ngf-pattern="'image/*'"
+        ngf-accept="'image/*'"
+        ngf-max-size="20MB"
+        ngf-min-height="100">Select File...</button>
+      <button>Upload</button>
+    </form>
+    <br>
+      <div ngf-drop="upload($files)" class="drop-box"
+  ngf-drag-over-class="'dragover'">Drop Images or PDFs files here</div>
+    <br>
+
+    <pre>{{file | json}}</pre>
+
+  </body>
+</html>
